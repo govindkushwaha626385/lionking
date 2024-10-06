@@ -20,6 +20,7 @@ const corsOptions = {
   origin: "https://lionking-frontend.vercel.app", // Your frontend domain
   methods: "GET,POST,PUT,DELETE", // Define allowed HTTP methods
   allowedHeaders: "Content-Type,Authorization", // Define allowed headers
+  credentials: true,
   optionsSuccessStatus: 200, // Success status code for preflight
 };
 
