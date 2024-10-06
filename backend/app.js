@@ -12,7 +12,7 @@ const pool = require("./db/database");
 app.use(
   cors({
     origin: "https://lionking-frontend.vercel.app",
-    credentials: true,
+    // credentials: true,
   })
 );
 // const corsOptions = {
