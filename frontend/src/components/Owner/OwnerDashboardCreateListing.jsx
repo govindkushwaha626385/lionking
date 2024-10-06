@@ -189,12 +189,7 @@ const OwnerDashboardCreateListing = () => {
                 discountPrice,
                 owner_id,
               },
-              {
-                headers: {
-                  "Content-Type": "application/json", // Ensures proper content-type is sent
-                },
-                withCredentials: true, // Allows cookies or other credentials to be sent if needed
-              }
+              
             );
             if (responce.data.success) {
               // window.location.reload(true);
