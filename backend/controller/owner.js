@@ -61,7 +61,7 @@ router.post(
 
         const activationToken = createActivationToken(owner);
 
-        const activationUrl = `http://localhost:3000/owner/activation/${activationToken}`;
+        const activationUrl = `https://lionking-frontend.vercel.app/owner/activation/${activationToken}`;
 
         try {
           await sendMail({

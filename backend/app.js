@@ -12,7 +12,7 @@ const pool = require("./db/database");
 app.use(cors());
 app.use(
   cors({
-    origin: "https://homeaway-frontend.vercel.app",
+    origin: "https://lionking-frontend.vercel.app",
     credentials: true,
   })
 );
