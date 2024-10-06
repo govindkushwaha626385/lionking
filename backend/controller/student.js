@@ -207,7 +207,7 @@ router.post(
           // console.log("Student :", student);
           const activationToken = createActivationToken(student);
 
-          const activationUrl = `https://lionking-frontend.vercel.app/activation/${activationToken}`;
+          const activationUrl = `https://www.flatmart.in/activation/${activationToken}`;
 
           try {
             await sendMail({

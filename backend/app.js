@@ -11,7 +11,7 @@ const pool = require("./db/database");
 
 app.use(
   cors({
-    origin: "https://lionking-frontend.vercel.app",
+    origin: "https://www.flatmart.in",
     // credentials: true,
   })
 );
