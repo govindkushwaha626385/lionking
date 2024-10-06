@@ -9,22 +9,20 @@ const cors = require("cors");
 const pool = require("./db/database");
 // const ErrorHandler = require("./utils/ErrorHandler");
 
-app.use(
-  cors({
-    origin: "https://www.flatmart.in",
-    // credentials: true,
-  })
-);
-// const corsOptions = {
-//   origin: "https://lionking-frontend.vercel.app", // Your frontend domain
-//   methods: "GET,POST,PUT,DELETE", // Define allowed HTTP methods
-//   allowedHeaders: "Content-Type,Authorization", // Define allowed headers
-//   credentials: true,
-//   optionsSuccessStatus: 200, // Success status code for preflight
-// };
+// app.use(
+//   cors({
+//     origin: "https://www.flatmart.in",
+//     // credentials: true,
+//   })
+// );
 
-// // Use CORS globally for routes
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: ["https://www.flatmart.in", "https://lionking-frontend.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  optionsSuccessStatus: 200, // Some legacy browsers choke on 204
+};
+
+app.use(cors(corsOptions));
 
 // app.use(express.static('public'));
 
