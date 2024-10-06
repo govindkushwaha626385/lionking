@@ -26,10 +26,11 @@ router.post(
       video_url,
     } = req.body;
 
+    console.log("body data ", req.body);
     const id = uuidv4().toString();
     try {
       await pool.query(
-        "INSERT INTO listing(id,type,title,description,state,city,area,gali_no,building_no,image_public_url,video_public_url,owner_id,price,priceDetails,discountPrice) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14,$15) returning *",
+        "INSERT INTO listing(id,type,title,description,state,city,area,gali_no,building_no,image_public_url,video_public_url,owner_id,price,pricedetails,discountprice) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14,$15) returning *",
         [
           id,
           type,
