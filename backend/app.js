@@ -9,15 +9,21 @@ const cors = require("cors");
 const pool = require("./db/database");
 // const ErrorHandler = require("./utils/ErrorHandler");
 
-app.use(cors());
-app.use(
-  cors({
-    origin: "https://lionking-frontend.vercel.app",
-    credentials: true,
-  })
-);
+// app.use(cors());
+// app.use(
+//   cors({
+//     origin: "https://lionking-frontend.vercel.app",
+//     credentials: true,
+//   })
+// );
+const corsOptions = {
+  origin: "https://lionking-frontend.vercel.app",
+  optionsSuccessStatus: 200,
+};
 
-// app.options('*', cors());
+app.use(cors(corsOptions));
+
+app.options('*', cors());
 
 // app.use(express.static('public'));
 
