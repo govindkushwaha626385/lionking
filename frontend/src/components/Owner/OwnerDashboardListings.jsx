@@ -50,7 +50,7 @@ const OwnerDashboardListings = () => {
       );
       if (responce.data.success) {
         setFeaturedListing(responce.data.data.listings);
-        console.log("Featured Listings : ", featuredListings);
+        // console.log("Featured Listings : ", featuredListings);
         setLoading(false);
       }
     } catch (error) {

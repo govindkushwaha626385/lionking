@@ -105,11 +105,21 @@ const Contact = () => {
 };
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone_no, setPhone_no] = useState();
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phone_no, setPhone_no] = useState();
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+
+  const [studentData, setStudentData] = useState({});
+
+  const fetchData = async (id) => {
+    const responce = await axios.get(`${server}/student/${id}`);
+    if (responce.data.success) {
+      setStudentData(responce.data.data.student);
+      // console.log("Student data : ", responce.data.data.student);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -117,24 +127,29 @@ const ContactForm = () => {
     if (!student_id) {
       toast.warn("Login to continue");
       navigate("/login");
-    }
-
-    const responce = await axios.post(`${server}/query/create-query`, {
-      student_id,
-      name,
-      email,
-      phone_no,
-      message,
-    });
-    if (responce.data.success) {
-      toast.success(responce.data.message);
-      setName("");
-      setEmail("");
-      setPhone_no("");
-      setMessage("");
-      navigate("/");
     } else {
-      toast.error(responce.data.message);
+      fetchData(student_id);
+      const name = studentData.name;
+      const email = studentData.email;
+      const phone_no = studentData.phone_no;
+
+      const responce = await axios.post(`${server}/query/create-query`, {
+        student_id,
+        name,
+        email,
+        phone_no,
+        message,
+      });
+      if (responce.data.success) {
+        toast.success(responce.data.message);
+        // setName("");
+        // setEmail("");
+        // setPhone_no("");
+        setMessage("");
+        navigate("/");
+      } else {
+        toast.error(responce.data.message);
+      }
     }
   };
 
@@ -144,7 +159,7 @@ const ContactForm = () => {
         Send Us a Message
       </h2>
       <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
-        <div>
+        {/* <div>
           <label
             className="block text-gray-700 font-semibold mb-2"
             htmlFor="name"
@@ -160,8 +175,8 @@ const ContactForm = () => {
             onChange={(e) => setName(e.target.value)}
             required
           />
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <label
             className="block text-gray-700 font-semibold mb-2"
             htmlFor="email"
@@ -177,8 +192,8 @@ const ContactForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <label
             className="block text-gray-700 font-semibold mb-2"
             htmlFor="phone_no"
@@ -194,7 +209,7 @@ const ContactForm = () => {
             onChange={(e) => setPhone_no(e.target.value)}
             required
           />
-        </div>
+        </div> */}
         <div>
           <label
             className="block text-gray-700 font-semibold mb-2"
