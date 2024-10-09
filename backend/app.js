@@ -33,13 +33,13 @@ app.use("/test", async (req, res) => {
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "100mb" }));
 
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "script-src 'self' 'sha256-DLhXEPFE88iWNhZp6h4GV/fLP4Xjx+1ydOYrtaG4jfg='"
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader(
+//     "Content-Security-Policy",
+//     "script-src 'self' 'sha256-DLhXEPFE88iWNhZp6h4GV/fLP4Xjx+1ydOYrtaG4jfg='"
+//   );
+//   next();
+// });
 // app.options('*', cors()); // Handle preflight requests
 
 // config
