@@ -131,7 +131,7 @@ const OwnerLogin = () => {
             >
               Login
             </button>
-            <Link to="/owner-sign-up">i don't have an account</Link>
+            <Link className="text-blue-800 font-bold" to="/owner-sign-up">i don't have an account</Link>
           </div>
         </form>
       </div>

@@ -139,7 +139,7 @@ const ListingDetails = ({ data, reviews }) => {
                   className="w-[80%]"
                 />
               ) : (
-                <video controls className="w-[80%] h-[37%]"> 
+                <video controls className="w-[80%] h-[37%]">
                   <source
                     src={data && data.video_public_url}
                     type="video/mp4"
@@ -148,7 +148,7 @@ const ListingDetails = ({ data, reviews }) => {
                 </video>
               )}
               <div className="w-full flex">
-                {data && ( 
+                {data && (
                   <>
                     <div
                       className={`${
@@ -270,36 +270,51 @@ const ListingDetails = ({ data, reviews }) => {
 
 const ProductDetailsInfo = ({ navigate, data, reviews, handleClick }) => {
   const [active, setActive] = useState(1);
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [rating, setRating] = useState();
   const [content, setContent] = useState("");
   const { id } = useParams();
   const listing_id = id;
 
+  const [studentData, setStudentData] = useState({});
+
+  const fetchData = async (id) => {
+    const responce = await axios.get(`${server}/student/${id}`);
+    if (responce.data.success) {
+      setStudentData(responce.data.data.student);
+      // console.log("Student data : ", responce.data.data.student);
+    }
+  };
+
   const handleSubmit = async (e) => {
     const student_id = localStorage.getItem("id");
     if (!student_id) {
       navigate("/login");
-    }
-    e.preventDefault();
-    try {
-      const responce = await axios.post(`${server}/review/create-review`, {
-        listing_id,
-        name,
-        rating,
-        content,
-        student_id,
-      });
+    } else {
+      fetchData(student_id); 
+      
+      const name = studentData.name; 
+     
+      e.preventDefault();
+      try {
+        const responce = await axios.post(`${server}/review/create-review`, {
+          listing_id,
+          name,
+          rating,
+          content,
+          student_id,
+        });
 
-      if (responce.data.success) {
-        // console.log(responce.data.message);
-        toast.success(responce.data.message);
-        setName("");
-        setRating();
-        setContent("");
+        if (responce.data.success) {
+          // console.log(responce.data.message);
+          toast.success(responce.data.message);
+          // setName("");
+          setRating();
+          setContent("");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -385,7 +400,7 @@ const ProductDetailsInfo = ({ navigate, data, reviews, handleClick }) => {
               </h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name  */}
-                <div>
+                {/* <div>
                   <label
                     className="block text-gray-700 font-semibold mb-2"
                     htmlFor="name"
@@ -400,7 +415,7 @@ const ProductDetailsInfo = ({ navigate, data, reviews, handleClick }) => {
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                     placeholder="Enter your good name"
                   />
-                </div>
+                </div> */}
 
                 {/* Rating */}
                 <div>
