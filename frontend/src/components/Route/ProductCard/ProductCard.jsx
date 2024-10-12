@@ -6,7 +6,7 @@ import {
   AiOutlineHeart,
 } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../../../styles/styles";
+// import styles from "../../../styles/styles";
 import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -16,7 +16,7 @@ const ProductCard = ({ data }) => {
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
   const status = data.status;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { id } = data;
   const listing_id = id;
