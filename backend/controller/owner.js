@@ -61,7 +61,7 @@ router.post(
 
         const activationToken = createActivationToken(owner);
 
-        const activationUrl = `https://www.flatmart.in/owner/activation/${activationToken}`;
+        const activationUrl = `https://lionking-frontend.vercel.app/owner/activation/${activationToken}`;
 
         try {
           await sendMail({
