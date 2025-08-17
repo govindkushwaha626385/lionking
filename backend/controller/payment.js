@@ -6,8 +6,6 @@ const pool = require("../db/database");
 const { v4: uuidv4 } = require("uuid");
 const sendMail = require("../utils/sendMail");
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
 const Razorpay = require("razorpay");
 // const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY } = process.env;
 
