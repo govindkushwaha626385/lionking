@@ -16,22 +16,6 @@ const razorpayInstance = new Razorpay({
 
 const RAZORPAY_ID_KEY = process.env.RAZORPAY_ID_KEY;
 
-router.post(
-  "/process",
-  catchAsyncErrors(async (req, res, next) => {
-    const myPayment = await stripe.paymentIntents.create({
-      amount: req.body.amount,
-      currency: "USD",
-      metadata: {
-        company: "Homeaway",
-      },
-    });
-    res.status(200).json({
-      success: true,
-      client_secret: myPayment.client_secret,
-    });
-  })
-);
 
 router.post(
   "/payment-process",
